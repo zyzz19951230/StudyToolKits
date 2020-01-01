@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>983</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -51,9 +51,27 @@
     <addaction name="actionCopyText"/>
     <addaction name="actionCopyImage"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="action_UserManual"/>
+    <addaction name="separator"/>
+    <addaction name="actionContact"/>
+    <addaction name="separator"/>
+    <addaction name="actionAboutPdfReader"/>
+    <addaction name="actionAboutStudyToolKits"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="sideToolBar">
@@ -119,8 +137,31 @@
    </property>
   </action>
   <action name="actionCopyImage">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Copy Image</string>
+   </property>
+  </action>
+  <action name="actionAboutPdfReader">
+   <property name="text">
+    <string>About PDF Reader</string>
+   </property>
+  </action>
+  <action name="actionAboutStudyToolKits">
+   <property name="text">
+    <string>About Study Tool Kits</string>
+   </property>
+  </action>
+  <action name="action_UserManual">
+   <property name="text">
+    <string> User Manual</string>
+   </property>
+  </action>
+  <action name="actionContact">
+   <property name="text">
+    <string>Contact</string>
    </property>
   </action>
  </widget>

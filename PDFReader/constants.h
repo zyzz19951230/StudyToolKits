@@ -3,9 +3,9 @@
 
 // icon map
 enum IconMap {
-    Outlines = 0xe601,
+    Outlines = 0xe8ce,
     Attachments = 0xe654,
-    Thumbnails = 0xe6ef,
+    Thumbnails = 0xe679,
     Bookmarks = 0xe637
 };
 

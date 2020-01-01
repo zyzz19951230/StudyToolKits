@@ -21,6 +21,13 @@ private:
     void setupActions();
     void setupWidgets();
 
+    int openPdfFile(const QString &filePath);
+
+    static void disableActions(std::initializer_list<QAction *> actions);
+    static void enableActions(std::initializer_list<QAction *> actions);
+    static QString getAbsFilePath(const QString &filename);
+    static QString getFilename(const QString &path);
+
     Ui::PDFReaderWindow *ui;
     QTabWidget *pdfTabView;
     QWidget *pdfOutlineView;

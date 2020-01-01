@@ -44,6 +44,20 @@ void PDFReaderWindow::setupActions()
     actionPdfBookmarkViewToggle->setIcon(QFontIcon::icon(IconMap::Bookmarks));
     actionPdfThumbnailViewToggle->setIcon(QFontIcon::icon(IconMap::Thumbnails));
     actionPdfAttachmentViewToggle->setIcon(QFontIcon::icon(IconMap::Attachments));
+
+    // setup init status
+    disableActions({
+                       actionPdfOutlineViewToggle,
+                       actionPdfBookmarkViewToggle,
+                       actionPdfThumbnailViewToggle,
+                       actionPdfAttachmentViewToggle,
+                       ui->actionCloseFile,
+                       ui->actionCloseAllFiles,
+                       ui->actionPdfProperties,
+                       ui->actionPrintPdf,
+                       ui->actionCopyText,
+                       ui->actionCopyImage,
+                   });
 }
 
 void PDFReaderWindow::setupWidgets()
@@ -73,6 +87,10 @@ void PDFReaderWindow::setupWidgets()
     tabifyDockWidget(pdfOutlineDock, pdfBookmarkDock);
     tabifyDockWidget(pdfOutlineDock, pdfAttachmentDock);
     resizeDocks({pdfOutlineDock}, {width() / 3}, Qt::Horizontal);
+    pdfOutlineDock->hide();
+    pdfBookmarkDock->hide();
+    pdfThumbnailDock->hide();
+    pdfAttachmentDock->hide();
 
     // setup tool bar
     ui->sideToolBar->addAction(actionPdfOutlineViewToggle);
@@ -88,6 +106,31 @@ void PDFReaderWindow::setupWidgets()
     ui->menuView->addSeparator();
     ui->menuView->addAction(actionMainToolBarToggle);
     ui->menuView->addAction(actionSideToolBarToggle);
+}
+
+void PDFReaderWindow::disableActions(std::initializer_list<QAction *> actions)
+{
+    for (QAction *action : actions) {
+        action->setDisabled(true);
+    }
+}
+
+void PDFReaderWindow::enableActions(std::initializer_list<QAction *> actions)
+{
+    for (QAction *action : actions) {
+        action->setDisabled(false);
+    }
+}
+
+QString PDFReaderWindow::getAbsFilePath(const QString &filename)
+{
+
+    return QFileInfo(filename).absoluteFilePath();
+}
+
+QString PDFReaderWindow::getFilename(const QString &path)
+{
+    return  QFileInfo(path).fileName();
 }
 
 void PDFReaderWindow::onPdfTabAboutToClose(int index)
